@@ -18,7 +18,7 @@ let pAequor = {
   spicemenNum : number,
   dna : arr,
   mutate (){
-    let randomlySelectedBase = this.dna[Math.floor(Math.random() * 15)]
+    let randomlySelectedBase = this.dna[Math.floor(Math.random() * this.dna.length)]
     let uniqueBases = ["A","T","C","G"];
     let filteredBase = uniqueBases.filter(elm => elm !== randomlySelectedBase);
     let newBase = filteredBase[Math.floor(Math.random() * 3)]
