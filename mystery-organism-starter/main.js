@@ -48,11 +48,26 @@ let pAequor = {
     let probabilityOfC = numberOfC.length/this.dna.length
     let numberOfG = this.dna.filter(elm => elm === "G")
     let probabilityOfG = numberOfG.length/this.dna.length;
-    if(probabilityOfC <= 0.6 || probabilityOfG <= 0.6) return false
+    if(probabilityOfC < 0.6 && probabilityOfG < 0.6) return false
       return true;
   }
 }
 return pAequor;
 }
-let pAequor = pAequorFactory(1,["A","C","T","G"])
+let pAequor = pAequorFactory(1,["A","A","C","C"])
+console.log(pAequor.willLikelySurvive())
 // pAequor.compareDNA({specimenNumber : 2, dna : ["C","A", "T", "T"]})
+
+//Creating 30 samples;
+let createSamples = (numOfSamples) => {
+  let samples = [];
+  for(let i = 0; samples.length < numOfSamples; i++){
+  let dnaSamples = pAequorFactory(i,mockUpStrand())
+  if(dnaSamples.willLikelySurvive()){
+    samples.push(dnaSamples)
+  }
+  }
+ return samples; 
+}
+
+console.log(createSamples(20))
